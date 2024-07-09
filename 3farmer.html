@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmer Page</title>
+    <style>
+        /* 全局样式 */
+        .title-bar {
+            background-color: #333; /* 标题背景色改为灰黑色 */
+            padding: 10px;
+            display: flex; /* 使用 Flexbox 布局 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        h1 {
+            color: white; /* 标题文字颜色改为白色 */
+            text-align: center;
+            font-size: 24px;
+            margin: 0; /* 移除默认的边距 */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        #content {
+            margin-top: 20px;
+            padding: 20px;
+            /*background-color: #e0e0e0; !* 内容部分背景色 *!*/
+            /*text-align: center; !* 按钮居中 *!*/
+        }
+
+        button {
+            background-color: #4CAF50; /* 绿色背景 */
+            border: none; /* 取消边框 */
+            color: white; /* 文字颜色白色 */
+            padding: 15px 32px; /* 按钮内边距 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer; /* 设置鼠标指针为手型 */
+            border-radius: 12px; /* 圆角 */
+        }
+        .section {
+            display: none;
+        }
+        /* 农户内容 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f5; /* 整体背景颜色 */
+        }
+        header {
+            background: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box {
+            padding: 8px;
+            width: 60%;
+            border: 1px solid #ccc;
+        }
+        .search-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        .products, .policy {
+            background: #ffffff;
+            padding: 20px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .product-item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .product-item .details {
+            flex: 1;
+        }
+        .product-item button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .policy-item {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="title-bar">
+    <div class="logo-container">
+<!--        <img class="logo" src="ji.jpg" alt="Logo">-->
+        <h1>Farmer Page</h1>
+    </div>
+</div>
+<div id="content">
+    <!-- 添加退出按钮 -->
+    <button onclick="logout()">Logout</button>
+</div>
+<header>
+    <input class="search-box" type="text" placeholder="搜索商品">
+    <button class="search-button" onclick="searchProduct()">搜索</button>
+</header>
+<div class="container">
+    <div class="products">
+        <h2>农商赵海军的商品展示</h2>
+        <div class="product-item">
+            <img src="s2.jpg" alt="产品1" style="width: 10%; height: 150px;">
+            <div class="details">
+                <h3>现摘红肉软籽石榴</h3>
+                <p>价格: ¥80/kg</p>
+            </div>
+            <button onclick="addToCart('产品名称1', 100)">提交产品</button>
+            <button onclick="buyNow('产品名称1', 100)">撤销产品</button>
+        </div>
+        <div class="product-item">
+            <img src="s8.jpg" alt="产品2" style="width: 10%; height: 150px;">
+            <div class="details">
+                <h3>新制石榴果酱</h3>
+                <p>价格: ¥30/瓶（250ml）</p>
+            </div>
+            <button onclick="addToCart('产品名称2', 150)">提交产品</button>
+            <button onclick="buyNow('产品名称2', 150)">撤销产品</button>
+        </div>
+        <!-- 更多产品项可以在此添加 -->
+    </div>
+<!--    直播联动窗口-->
+    <div class="policy">
+        <h2>直播联动</h2>
+        <div class="policy-item">
+            <h3>抖音直播</h3>
+            <p><a href="https://www.douyin.com">抖音直播连线链接https://www.douyin.com</a></p>
+        </div>
+        <div class="policy-item">
+            <h3>快手直播</h3>
+            <p><a href="https://www.kuaishou.com">快手直播连线链接https://www.kuaishou.com</a></p>
+        </div>
+        <!-- 更多政策提要可以在此添加 -->
+    </div>
+    <div class="policy">
+        <h2>相关政策提要</h2>
+        <div class="policy-item">
+            <h3>热门时政1</h3>
+            <p>坚持以市场为导向，以营销为主导，以品牌为统领，以活动为载体，广泛动员可依靠力量，集聚资源扩大宣传，加大产销有效对接，拓宽数字营销渠道，着力将淅川县农产品打造成为国内第一、世界知名的高品质、国际范的农业“金字招牌”。淅川县始终牢记总书记的殷殷嘱托，以实施“双九战略”为统领，聚焦“守底线、抓发展、促振兴”，务实推进巩固拓展脱贫攻坚成果、乡村产业发展、乡村建设和乡村治理工作，高效推动乡村振兴开新局、上台阶，不断增强人民群众获得感、幸福感。</p>
+            <p>闽海之门，英雄之城。厦门市作为福建省的副省级城市，国务院批复确定的中国经济特区和东南沿海重要的中心城市、港口及风景旅游城市；西接漳州，北邻泉州，东南与大小金门和大担岛隔海相望，是闽南地区的主要城市，与漳州、泉州并称厦漳泉闽南金三角经济区。本次活动在厦门市河南商会的支持下， 以“凝聚乡情、携手互助、发展共赢、增彩淅川”为宗旨。逐步通过厦门副省级城市的优势，和厦门河南商会的商会优势，加快推动淅川农产品在闽南金三角市场的知名度，让消费者更加喜爱淅川味道。推介淅川产业经济的发展，共促淅川林果行业的产销对接及信息交流与合作。</p>
+            <p>淅川县商务局将于2024年11月26日在厦门希尔顿逸林酒店星月宴会厅举办淅川县特色农产品（厦门）产销对接活动。</p>
+        </div>
+        <div class="policy-item">
+            <h3>热门时政2</h3>
+            <p>通过本次推荐会赢得顾客的口碑，促进优质农产品的销售。</p>
+            <p>逐步通过厦门副省级城市的优势，和厦门河南商会的商会优势，加快推动淅川农产品在闽南金三角市场的知名度，让消费者更加喜爱淅川味道。</p>
+        </div>
+        <!-- 更多政策提要可以在此添加 -->
+    </div>
+</div>
+<script>
+    function searchProduct() {
+        alert('搜索功能尚未实现');
+    }
+
+    function addToCart(name, price) {
+        alert('已将 ' + name + ' 提交商城。价格：¥' + price);
+    }
+
+    function buyNow(name, price) {
+        alert('产品撤销 ' + name + '。价格：¥' + price);
+    }
+    // JavaScript 函数用于退出并跳转到登录页面
+    function logout() {
+        // 跳转到登录页面
+        window.location.href = "1login.html";
+    }
+</script>
+</body>
+</html>

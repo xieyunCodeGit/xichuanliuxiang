@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>淅川榴香元宇宙</title>
+  <style>
+    body {
+      background: url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      margin-top: 20px;
+    }
+    .footer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-enter {
+      padding: 20px 40px;
+      font-size: 40px;
+      background-color: #ce3042;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-enter:hover {
+      background-color: #45a049;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 20px;
+      background-color: #ce3042;
+      transition: width 3s;
+    }
+    .theme-text {
+      font-size: 120px;
+      font-weight: bold;
+      margin-bottom: 80px;
+    }
+    @keyframes floatText {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2) translateX(var(--x-displacement)) translateY(var(--y-displacement)); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <button onclick="switchLanguage()">中/English</button>
+</div>
+<div class="theme-text">淅川榴香元宇宙平台</div>
+<button class="btn-enter" onclick="loadContent()">立即进入元宇宙</button>
+<div class="progress-bar" id="progressBar"></div>
+<div class="footer">
+  团队名称: 淅川榴香团队<br>
+  客服电话: +156 1730 0030<br>
+  创作声明: 本内容由淅川榴香团队创作<br>
+  团队项目简介: 探索元宇宙的奇妙之旅
+</div>
+<script>
+  document.body.addEventListener('mousemove', function (e) {
+    const phrase = "淅川榴香元宇宙平台";
+    for (let i = 0; i < phrase.length; i++) {
+      let text = document.createElement('span');//
+      text.innerText = phrase[i];
+      text.style.position = 'absolute';
+      text.style.top = (e.clientY + Math.random() * 50 - 25) + 'px';
+      text.style.left = (e.clientX + Math.random() * 50 - 25) + 'px';
+      text.style.color = 'rgba(255, 255, 255, ' + Math.random() + ')';
+      text.style.fontSize = (Math.random() * 10 + 16) + 'px';
+      text.style.pointerEvents = 'none';
+      const xDisplacement = (Math.random() * 200 - 100) + 'px'; // 横向位移
+      const yDisplacement = (Math.random() * 200 - 100) + 'px'; // 纵向位移
+      text.style.setProperty('--x-displacement', xDisplacement);
+      text.style.setProperty('--y-displacement', yDisplacement);
+      text.style.animation = 'floatText 1s forwards';
+      document.body.appendChild(text);
+      setTimeout(() => text.remove(), 2000);
+    }
+  });
+
+  function loadContent() {
+    var elem = document.getElementById("progressBar");
+    var width = 0;
+    var id = setInterval(frame, 20);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        window.location.href = '1login.html';
+      } else {
+        width++;
+        elem.style.width = width + '%';
+      }
+    }
+  }
+
+  function switchLanguage() {
+    var lang = document.documentElement.lang;
+    if (lang === 'zh') {
+      document.documentElement.lang = 'en';
+    } else {
+      document.documentElement.lang = 'zh';
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('l-bg1.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .login-section {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .logo {
+            background: url('logo.jpg') no-repeat center;
+            background-size: contain; /* 根据您的logo大小进行调整 */
+            width: 150px; /* 根据您的logo大小进行调整 */
+            height: 150px; /* 根据您的logo大小进行调整 */
+            border-right: 1px solid #ccc;
+            padding: 20px;
+        }
+        .login-form {
+            margin-left: 20px;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 0.8rem;
+            display: none; /* 默认隐藏错误信息 */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="login-section">
+        <div class="logo"></div>
+        <div class="login-form">
+            <label for="role">登录角色:</label>
+            <select id="role">
+                <option value="user">用户</option>
+                <option value="farmer">农商</option>
+                <option value="admin">管理员</option>
+            </select>
+            <input type="text" id="username" placeholder="用户名" />
+            <input type="password" id="password" placeholder="密码" />
+            <button onclick="login()">登录</button>
+            <a href="#">忘记密码?</a>
+            <div class="error">输入错误，请重新尝试！</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function login() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var role = document.getElementById('role').value;
+        var errorElement = document.querySelector('.error');
+
+        // 存储不同角色的用户名、密码及对应跳转页面
+        var credentials = {
+            user: [
+                { username: '张三', password: '123456', redirect: '2user.html' },
+                { username: '三金', password: '123456', redirect: '2user(三金).html' },
+                { username: '小金子', password: '123456', redirect: '2user(小金子).html' },
+                { username: '清风解意月澄明', password: '54121458', redirect: '2user(组织).html' },
+                { username: '图图', password: '123456', redirect: '2user(图图).html' }
+
+
+            ],
+            farmer: [
+                { username: '赵海军', password: '123456', redirect: '3farmer.html' }
+            ],
+            admin: [
+                { username: 'root', password: '123456', redirect: '4admin.html' }
+            ]
+        };
+
+        // 验证用户名和密码是否正确
+        var validLogin = credentials[role].some(function (credential) {
+            return username === credential.username && password === credential.password;
+        });
+
+        if (validLogin) {
+            errorElement.style.display = 'none';
+            alert('登录成功，欢迎来到您的元宇宙石榴园！');
+            setTimeout(function() {
+                window.location.href = credentials[role].find(cred => cred.username === username).redirect;
+            }, 1000);
+        } else {
+            errorElement.style.display = 'block'; // 显示错误信息
+        }
+    }
+</script>
+</body>
+</html>

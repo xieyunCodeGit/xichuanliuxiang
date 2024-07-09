@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>多角色登录页面</title>
+  <style>
+    /* 其他样式保持不变 */
+    .tree-icon {
+      width: 50px;
+      height: 70px;
+      background: url('tree-icon.png') no-repeat center center;
+      background-size: cover;
+      cursor: pointer;
+    }
+    .game-button, .close-game {
+      /* 样式保持不变 */
+    }
+    .overlay {
+      /* 样式保持不变 */
+    }
+    .game-area {
+      /* 样式保持不变 */
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <button class="game-button" onclick="showGame()">开始游戏</button>
+  <!-- 登录表单和其他内容保持不变 -->
+</div>
+<div class="overlay">
+  <div class="game-area">
+    <span class="close-game" onclick="closeGame()">X</span>
+    <p>砍树游戏: 请点击树木图标砍树增加分数。</p>
+    <div class="tree-icon" onclick="incrementScore()"></div>
+    <p>分数: <span id="score">0</span></p>
+  </div>
+</div>
+
+<script>
+  function showGame() {
+    document.querySelector('.overlay').style.display = 'block';
+    document.body.style.filter = 'blur(8px)';
+  }
+  function closeGame() {
+    document.querySelector('.overlay').style.display = 'none';
+    document.body.style.filter = 'none';
+  }
+  function incrementScore() {
+    var score = document.getElementById('score');
+    score.textContent = parseInt(score.textContent) + 1;
+  }
+</script>
+</body>
+</html>

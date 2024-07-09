@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <style>
+        /*body, html {*/
+        /*    height: 100%;*/
+        /*    margin: 0;*/
+        /*    font-family: Arial, sans-serif;*/
+        /*    background: url('bg1.jpg') no-repeat center center fixed;*/
+        /*    background-size: cover;*/
+        /*}*/
+
+        .per_bg {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('bg2.jpg') no-repeat center center fixed; /* 替换为新的背景图片 */
+            background-size: cover;
+        }
+        .title-bar {
+            background-color: rgb(225, 164, 102); /* 标题背景色 */
+            padding: 10px;
+            display: flex; /* 使用 Flexbox 布局 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        h1 {
+            color: white; /* 标题文字颜色改为白色 */
+            text-align: center;
+            font-size: 24px;
+            margin: 0; /* 移除默认的边距 */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        #content {
+            margin-top: 20px;
+            padding: 20px;
+            /*background-color: #e0e0e0; !* 内容部分背景色 *!*/
+            /*text-align: center; !* 按钮居中 *!*/
+        }
+
+        button {
+            background-color: #FF8B3D; /* 绿色背景 */
+            border: none; /* 取消边框 */
+            color: white; /* 文字颜色白色 */
+            padding: 15px 32px; /* 按钮内边距 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer; /* 设置鼠标指针为手型 */
+            border-radius: 12px; /* 圆角 */
+        }
+        .section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    /*个人部分的样式 */
+    * {
+        box-sizing: border-box;
+    }
+
+
+
+        body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+    }
+    .left, .right {
+        flex: 1;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        background: url('ji.jpg') no-repeat center center;
+        background-size: cover;
+        border: 1px solid #ccc;
+    }
+        .profile-image2 {
+            width: 100px;
+            height: 100px;
+            background: url('三金.jpg') no-repeat center center;
+            background-size: cover;
+            border: 1px solid #ccc;
+        }
+    .info-box {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+    .button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #FF8B3D;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background: white;
+        border: 1px solid #ccc;
+        z-index: 1000;
+    }
+    /*元宇宙树*/
+
+    /*实体树窗口背景*/
+    .overlay {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255);
+        z-index: 999;
+    }
+        /*购物部分的样式*/
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            float: left;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .cart {
+            clear: both;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        /* 论坛样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f5; /* 确保整个页面背景颜色为浅灰色 */
+        }
+        header {
+            background: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box {
+            padding: 8px;
+            width: 60%; /* 搜索框长度增加 */
+            border: 1px solid #ccc;
+        }
+        .search-button {
+            padding: 10px 20px;
+            background-color: #FF8B3D;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            background: #ffffff;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+        .post {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .post img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .post textarea {
+            flex: 1;
+            padding: 10px;
+        }
+        .post button {
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+        .discussion {
+            margin-top: 20px;
+        }
+        .discussion .message {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .discussion .message:last-child {
+            border-bottom: none;
+        }
+        .discussion img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .discussion .content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="title-bar">
+    <div class="logo-container">
+        <img class="logo" src="ji.jpg" alt="Logo">
+        <h1>User Page</h1>
+    </div>
+</div>
+
+
+<div id="content">
+    <button onclick="showSection('personal')">个人</button>
+    <button onclick="showSection('shopping')">购物</button>
+    <button onclick="showSection('forum')">论坛</button>
+    <!-- 添加退出按钮 -->
+    <button onclick="logout()">Logout</button>
+
+
+    <div id="personal" class="section">
+
+        <!--  个人部分的内容  -->
+        <div class="container">
+            <div class="left">
+                <div class="profile-image2"></div>
+                <div class="info-box"><p>三金</p><p>实名：魏鑫</p></div>
+                <button class="button" onclick="openModaltwo()">元宇宙装扮</button>
+                <button class="button" onclick="openModaltwo()">元宇宙树园</button>
+                <img src="y-tree2.jpg" alt="元宇宙树" style="width: 100%; height: 500px;">
+                <button class="button" onclick="openModal()">实体树</button>
+            </div>
+            <div class="right">
+                <div class="info-box">物流信息
+                    <p>1·新酿石榴酒（状态：已付款）</p>
+                <p>正由 河南省南阳市淅川县 发往-----> 河南省南阳市 预计今日到达</p>
+                    <p></p>
+                    <p>2·新酿石榴果酱（状态：已付款）</p>
+                    <p>正由 河南省南阳市淅川县 发往-----> 河南省南阳市 预计明日到达</p>
+                    <p></p>
+                </div>
+                <button class="button" onclick="openModaltwo()">留存地址</button>
+                <button class="button" onclick="openModaltwo()">添加地址</button>
+                <button class="button" onclick="openModaltwo()">更改地址</button>
+                <div style="max-width: 100%; height: 150px;">
+                    <img src="bg2.jpg" alt="背景图片" style="width: 100%; height: 450px;">
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="overlay" onclick="closeModal()"></div>
+<!--        实体树窗口-->
+        <div class="modal">
+            <p>当前时间: <span id="time"></span> </p>
+            <img src="tree2.jpg" style="width: 100%; max-height: 400px;">
+        </div>
+        <script>
+            function openModal() {
+                document.querySelector('.modal').style.display = 'block';
+                document.querySelector('.overlay').style.display = 'block';
+                updateTime();
+            }
+
+            function closeModal() {
+                document.querySelector('.modal').style.display = 'none';
+                document.querySelector('.overlay').style.display = 'none';
+            }
+
+            function updateTime() {
+                var now = new Date();
+                var timeString = now.toLocaleTimeString();
+                document.getElementById('time').textContent = timeString;
+            }
+
+            setInterval(updateTime, 1000);  // 更新时间每秒
+        </script>
+    </div>
+
+    <div id="shopping" class="section">
+        <h2>购物部分</h2>
+        <!-- 购物部分的内容 -->
+<!--        商品1-->
+        <div class="product">
+<!--            <img src="s2.jpg" alt="产品图片">-->
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s1.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>精装红肉软籽薄皮大石榴</h4>
+            <p>¥50.00/个</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        商品2-->
+        <div class="product">
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s2.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>现摘红肉软籽石榴</h4>
+            <p>¥80/kg</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        商品3-->
+        <div class="product">
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s8.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>新制石榴果酱</h4>
+            <p>¥30/瓶（250ml）</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        商品4-->
+        <div class="product">
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s4.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>软子多水石榴</h4>
+            <p>¥70/kg</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        商品5-->
+        <div class="product">
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s5.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>红肉薄皮石榴</h4>
+            <p>¥85/kg</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        商品6-->
+        <div class="product">
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s6.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>薄皮软籽石榴</h4>
+            <p>¥70/kg</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        商品7-->
+        <div class="product">
+            <div style="max-width: 100%; height: 150px;">
+                <img src="s7.jpg" alt="产品图片" style="width: 100%; height: 150px;">
+            </div>
+            <h4>新酿石榴酒（20° 450ml）</h4>
+            <p>¥99</p>
+            <button onclick="addToCart(this)">加入购物车</button>
+            <button onclick="payNow()">立即支付</button>
+        </div>
+<!--        <div class="product">-->
+<!--            <div style="max-width: 100%; height: 150px;">-->
+<!--                <img src="s8.jpg" alt="产品图片" style="width: 100%; height: 150px;">-->
+<!--            </div>-->
+<!--            <h4>产品名称</h4>-->
+<!--            <p>¥99.00</p>-->
+<!--            <button onclick="addToCart(this)">加入购物车</button>-->
+<!--            <button onclick="payNow()">立即支付</button>-->
+<!--        </div>-->
+<!--        <div class="product">-->
+<!--            <div style="max-width: 100%; height: 150px;">-->
+<!--                <img src="s1.jpg" alt="产品图片" style="width: 100%; height: 150px;">-->
+<!--            </div>-->
+<!--            <h4>产品名称</h4>-->
+<!--            <p>¥99.00</p>-->
+<!--            <button onclick="addToCart(this)">加入购物车</button>-->
+<!--            <button onclick="payNow()">立即支付</button>-->
+<!--        </div>-->
+<!--        <div class="product">-->
+<!--            <div style="max-width: 100%; height: 150px;">-->
+<!--                <img src="s1.jpg" alt="产品图片" style="width: 100%; height: 150px;">-->
+<!--            </div>-->
+<!--            <h4>产品名称</h4>-->
+<!--            <p>¥99.00</p>-->
+<!--            <button onclick="addToCart(this)">加入购物车</button>-->
+<!--            <button onclick="payNow()">立即支付</button>-->
+<!--        </div>-->
+        <div class="cart">
+            <h3>购物车</h3>
+            <ul id="cartItems"></ul>
+            <button onclick="checkOut()">查看购物车</button>
+        </div>
+        <script>
+            var cart = [];
+
+            function addToCart(button) {
+                var productInfo = button.parentElement;
+                var productName = productInfo.getElementsByTagName('h4')[0].innerText;
+                var productPrice = productInfo.getElementsByTagName('p')[0].innerText;
+                cart.push({name: productName, price: productPrice});
+                updateCart();
+            }
+
+            function updateCart() {
+                var cartItems = document.getElementById('cartItems');
+                cartItems.innerHTML = '';
+                cart.forEach(function(item) {
+                    var li = document.createElement('li');
+                    li.innerText = item.name + ' - ' + item.price;
+                    cartItems.appendChild(li);
+                });
+            }
+
+            function payNow() {
+                alert('进入支付流程...');
+            }
+
+            function checkOut() {
+                alert('查看购物车内容');
+            }
+        </script>
+    </div>
+
+    <div id="forum" class="section">
+        <h2>论坛部分</h2>
+        <!-- 论坛部分的内容 -->
+        <header>
+        <input class="search-box" type="text" placeholder="搜索内容">
+        <button class="search-button" onclick="searchContent()">搜索</button>
+    </header>
+        <div class="content">
+            <div class="post">
+                <img src="三金.jpg" alt="用户头像">
+                <textarea placeholder="分享新鲜事..."></textarea>
+                <button onclick="postMessage()">发表</button>
+            </div>
+            <div class="discussion">
+                <div class="message">
+                    <img src="ji.jpg" alt="其他用户头像">
+                    <div class="content">
+                        <strong>root</strong>
+                        <p>大家好！我是本网站管理员账号，欢迎来到淅川榴香元宇宙平台，有问题欢迎讨论和反馈。</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="小金子.jpg" alt="其他用户头像">
+                    <div class="content">
+                        <strong>小金子</strong>
+                        <p>淅川榴香元宇宙真是太棒了！平台画面精美，互动性强，让我仿佛置身于一个真实的虚拟世界。尤其喜欢这里的社交功能，可以和志同道合的朋友一起交流、分享心得。</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="酥饼.jpg" alt="其他用户头像">
+                    <div class="content">
+                        <strong>酥饼</strong>
+                        <p>作为一个石榴爱好者，我在这款元宇宙平台中找到了归属感。淅川榴香元宇宙提供了丰富的石榴品种和各种石榴制品的品尝体验，让我大饱口福。此外，还可以参与各种有趣的活动，提高了我的参与度。</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="弹簧.jpg" alt="其他用户头像">
+                    <div class="content">
+                        <strong>弹簧</strong>
+                        <p>这个平台非常适合休闲放松。在淅川榴香元宇宙中，我可以漫步在虚拟的石榴园，欣赏美丽的风景，还能与其他玩家互动，体验不一样的游戏乐趣。</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="图图.jpg" alt="其他用户头像">
+                    <div class="content">
+                        <strong>图图</strong>
+                        <p>作为一名热衷于虚拟经济的玩家，我在淅川榴香元宇宙中找到了很好的投资机会。通过购买虚拟土地种植石榴，我可以获得收益，还能与其他投资者交流经验，真是太棒了！</p>
+                    </div>
+                </div>
+                <!-- 更多消息可以类似上面这样添加 -->
+            </div>
+        </div>
+        <script>
+            function postMessage() {
+                alert('发表功能尚未实现');
+            }
+
+            function searchContent() {
+                alert('搜索功能尚未实现');
+            }
+        </script>
+    </div>
+</div>
+<img src="bg1.jpg" alt="背景图片" style="width: 100%; height: 1000px;">
+<script>
+    function showSection(section) {
+        // 隐藏所有部分
+        var sections = document.querySelectorAll('.section');
+        sections.forEach(function(sec) {
+            sec.classList.remove('active');
+        });
+
+        // 显示选定的部分
+        var selectedSection = document.getElementById(section);
+        selectedSection.classList.add('active');
+    }
+    // JavaScript 函数用于退出并跳转到登录页面
+    function logout() {
+        // 跳转到登录页面
+        window.location.href = "1login.html";
+    }
+
+</script>
+</body>
+</html>
